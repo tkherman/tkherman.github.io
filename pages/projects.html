@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Herman Tong">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="Herman's Website">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="http://localhost:8000/theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <!--<center><a href="http://localhost:8000"><img id="avatar" src=""></a></center>-->
+    <h1>Herman's Website</h1>
+      <p>Junior in Computer Science at Notre Dame</p>
+    <br>
+
+
+    <nav class="nav">
+      <ul class="list-bare">
+      
+          <li><a class="nav__link" href="http://localhost:8000">About me</a></li>
+          <li><a class="nav__link" href="http://localhost:8000/pages/projects.html">Projects</a></li>
+          <li><a class="nav__link" href="http://localhost:8000/category/blog.html">Blog</a></li>
+         
+        
+      </ul>
+    </nav>
+
+    <p class="social">
+        <a href="http://github.com/tkherman" target="_blank" ><img src="http://localhost:8000/theme/images/icons/github.png"></a>
+        <a href="https://www.linkedin.com/in/herman-tong-b582b057" target="_blank" ><img src="http://localhost:8000/theme/images/icons/linkedin.png"></a>
+    </p>
+
+    <h2>Categories</h2>
+    <ul class="navbar">
+      <li><a href="http://localhost:8000/category/blog.html">blog</a></li>
+    </ul> 
+
+    <h2>Contact</h2>
+    <ul class="navbar">
+    <li><font color="#41c4f4">ktong1@nd.edu</font></li>
+    <li><font color="#41c4f4">(408)-364-6830</font></li>
+
+
+
+  </aside>
+
+  <!-- Content -->
+  <article>
+<section id="content" class="body">
+        
+        <h2><center><strong>Projects</strong></center></h2>
+<hr>
+<h3><center><strong>Texas Hold'em Simulation with AI</strong></center></h3>
+<p><center><img alt="Alt Text" src="http://localhost:8000/images/TexasHoldem.png"></center></p>
+<p>This is a fully implemented command-line based Texas Hold'em Poker Game with odd
+calculation. ASCII graphics and AI players using C++. It follows the fixed limited 
+betting and ante rules. It utilizes the STL::&lt;unordered_map&gt; to store rankings
+of different hands and uses the Monte Carlo approach to simulate the probability
+of winning based on player's hand and the community cards.</p>
+<p><center><img alt="Icon" src="http://localhost:8000/images/github2.png"><a href="https://github.com/tkherman/Texas-Hold-em-Game"> Click here for Texas Hold'em repository </a></center></p>
+<hr>
+<h3><center><strong>Web Server</strong></center></h3>
+<p><center><img alt="Alt Text" src="http://localhost:8000/images/spidey.gif"></center></p>
+<p>In my system programming course, one of the final projects was to create a web
+server which can handle file requests, CGI script requests and directory
+browsing requests. It was implemented using C system calls and can handle
+request one by one or by forking. A python script and several shell scripts were
+also created to benchmark the latencies and throughputs for forking and
+single. To see results of the benchmark and analysis, please click the link
+below to the blog post or read the README.md in the Github repository.</p>
+<p>p.s. The thumbnail picture is a meme of one of my group members</p>
+<p><center><img alt="Icon" src="http://localhost:8000/images/blog.png"><a href="../server-forking.html"> How forking affects latency and throughput of server </a></center>
+<center><img alt="Icon" src="http://localhost:8000/images/github2.png"><a href="https://github.com/tkherman/Spidey-Webserver"> Click here for Web Server repository </a></center></p>
+<hr>
+<h3><center><strong>Partial re-implementation of find</strong></center></h3>
+<p>This is an partial re-implementation of the linux <strong>find</strong> command using C system
+calls that deal with files, directories, and processes. Similar to <strong>find</strong>,
+<strong>search</strong> recursively searches a directory and prints items it finds based on
+the specific options:</p>
+<p>$ ./search -help</p>
+<p>Usage: ./search PATH [OPTIONS] [EXPRESSION]</p>
+<p>Options:</p>
+<div class="highlight"><pre><span></span>-executable     File is executable or directory is searchable to user
+-readable       File readable to user
+-writable       File is writable to user
+
+-type [f|d]     File is of type f for regular file or d for
+                directory
+
+-empty          File or directory is empty
+
+-name  pattern  Base of file name matches shell pattern
+-path  pattern  Path of file matches shell pattern
+
+-perm  mode     File&#39;s permission bits areexactly mode (octal)
+-newer file     File was modified morerecently than file
+
+-uid   n        File&#39;s numeric user ID is n
+-gid   n        File&#39;s numeric group ID is n
+</pre></div>
+
+
+<p>Expressions:</p>
+<div class="highlight"><pre><span></span>-print          Display file path (default)
+-exec cmd {} ;  Execute command on path
+</pre></div>
+
+
+<p><center><img alt="Icon" src="http://localhost:8000/images/github2.png"><a href="https://github.com/tkherman/search"> Click here for Search repository </a></center></p>
+</section>
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
+      which takes great advantage of <a href="http://python.org">Python</a>.
+      Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+    </p>
+  </footer>
+
+
+</body>
+</html>
