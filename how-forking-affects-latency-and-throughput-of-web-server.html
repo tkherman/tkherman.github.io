@@ -30,11 +30,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./how-forking-affects-latency-and-throughput-of-web-server.html">
 <meta name="twitter:title" content="Herman's Website ~ How forking affects latency and throughput of web server">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="The web server called Spidey is split into multiple files which have different functions that carry out different jobs. It is organized so that it can process requests in parallel and not in parallel. socket.c: + create socket, bind socket to a specific port and listen for incoming connection + returns …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="Herman's Website ~ How forking affects latency and throughput of web server" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="The web server called Spidey is split into multiple files which have different functions that carry out different jobs. It is organized so that it can process requests in parallel and not in parallel. socket.c: + create socket, bind socket to a specific port and listen for incoming connection + returns …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -83,7 +83,231 @@
     <article>
         <h2 class="post_title post_detail"><a href="./how-forking-affects-latency-and-throughput-of-web-server.html" rel="bookmark" title="Permalink to How forking affects latency and throughput of web server">How forking affects latency and throughput of web server</a></h2>
         <div class="entry-content blog-post">
-            
+            <p>The web server called Spidey is split into multiple files which have different
+functions that carry out different jobs. It is organized so that it can process
+requests in parallel and not in parallel. </p>
+<p>socket.c:
++ create socket, bind socket to a specific port and listen for incoming
+connection
++ returns a file descriptor</p>
+<p>request.c:
++ parse the HTML request
++ save request info such as method, uri, query, header etc in a <strong>struct request</strong>
++ provide function to free the allocated <strong>struct request</strong></p>
+<p>handler.c:
++ determine the type of request
++ return appropriate files to client according to the file type
++ handles HTML, static files and CGI Scripts</p>
+<p>single.c:
++ repeated accept request, handle request and free request in a single while loop</p>
+<p>forking.c:
++ repeated accept request
++ fork a new process and have the child process handle request
++ free struct request in parent process</p>
+<p>spidey.c:
++ parse the command argument for starting server
++ allow user to decide the method of handling request, port, root directory...</p>
+<h1>Forking and how it works in Spidey</h1>
+<p>To process requests in parallel, the server utilizes <strong>forking</strong>. Forking is
+when a process spawns another process to carry out some task. The spawned
+process is called the child process while the spawning process is the parent
+process. To process requests in parallel, the server waits for incoming
+requests. When a request arrives, the server first accept the request and parse
+it. Then, it forks a child process to handle the request.</p>
+<p>In general, when a parent process creates a child process, the parent process
+would wait for the child process to complete the task and exit using the wait()
+system call to prevent zombies. However, in order for the server to process
+requests in parallel, the server instead ignores the child so that multiple
+child processes can be forked and work in parallel.</p>
+<h1><strong> Benchmark</strong></h1>
+<p>Since the server can run in both parallel and non-parallel, it could be used to
+benchmark the performance of the server when using forking and when not using
+forking. To do so, a python script called thor.py was created that is used to
+send multiple requests to a server. thor.py takes in number of processes and
+number of requests as the argument and send multiple requests according to them.</p>
+<p>The web server was benchmarked by measuring the average latency of different
+types of requests using 1, 2, and 4 processes on 100 requests. The average
+throughput was also measured. Dummy files of 1KB, 1MB, and 1GB were created and
+throughput was calculated by dividing the size of the file by the time it took
+for the request to complete.</p>
+<h2>Table for Latency Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>File Type</th>
+<th>Number of Processes</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single</td>
+<td>Directory</td>
+<td>1</td>
+<td>.0059</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Directory</td>
+<td>1</td>
+<td>.0061</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Directory</td>
+<td>2</td>
+<td>.0081</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Directory</td>
+<td>2</td>
+<td>.0075</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Directory</td>
+<td>4</td>
+<td>.0161</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Directory</td>
+<td>4</td>
+<td>.0147</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Static File</td>
+<td>1</td>
+<td>.0060</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Static File</td>
+<td>1</td>
+<td>.0061</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Static File</td>
+<td>2</td>
+<td>.0081</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Static File</td>
+<td>2</td>
+<td>.0074</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Static File</td>
+<td>4</td>
+<td>.0160</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Static File</td>
+<td>4</td>
+<td>.0143</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>CGI Script</td>
+<td>1</td>
+<td>.0145</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>CGI Script</td>
+<td>1</td>
+<td>.0146</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>CGI Script</td>
+<td>2</td>
+<td>.0254</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>CGI Script</td>
+<td>2</td>
+<td>.0161</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>CGI Script</td>
+<td>4</td>
+<td>.0515</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>CGI Script</td>
+<td>4</td>
+<td>.0344</td>
+</tr>
+</tbody>
+</table>
+<h2>Table for Throughput Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>File Size</th>
+<th>Average Throughput (GB/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single</td>
+<td>1 KB</td>
+<td>.036</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>1 KB</td>
+<td>.040</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>1 MB</td>
+<td>29.3</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>1 MB</td>
+<td>35.2</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>1 GB</td>
+<td>44.7</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>1 GB</td>
+<td>94.7</td>
+</tr>
+</tbody>
+</table>
+<p>The results clearly display that forking to handle requests has both advantages
+and disadvantages.  When running in forking mode, the parent process forks to
+create a new child process to handle get requests.  This way, the parent can
+focus on accepting requests while delegating the handling of these requests to
+children (which gently kill themselves when they finish). Although forking isn't
+always beneficial because there's overhead cost in creating a new process, it
+seems that forking is mostly beneficial in the above example.</p>
+<p>As noted above in our markdown tables, all of our tests with forking show 
+significant advantages over single processing.  For instance the test with 
+forking for the 1GB file yielded a throughput over twice as high as the 
+analogous single processing test.  The only tests in which single processing 
+performed better were the latency tests with one process and (100 requests). 
+This makes sense because much of the benefits of forking are lost when only 
+using one process, so the overhead of forking worsened performance as explained 
+above.</p>
         </div>
         <div class="post_list">
             <span>By </span>
