@@ -142,166 +142,166 @@ types of requests using 1, 2, and 4 processes on 100 requests. The average
 throughput was also measured. Dummy files of 1KB, 1MB, and 1GB were created and
 throughput was calculated by dividing the size of the file by the time it took
 for the request to complete.</p>
-<p><center>## Table for Latency Tests</center></p>
+<h1><center>Table for Latency Tests</center></h1>
 <table>
 <thead>
 <tr>
 <th>Mode</th>
 <th>File Type</th>
-<th>Number of Processes</th>
-<th>Time</th>
+<th align="right">Number of Processes</th>
+<th align="right">Time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Single</td>
 <td>Directory</td>
-<td>1</td>
-<td>.0059</td>
+<td align="right">1</td>
+<td align="right">.0059</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>Directory</td>
-<td>1</td>
-<td>.0061</td>
+<td align="right">1</td>
+<td align="right">.0061</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>Directory</td>
-<td>2</td>
-<td>.0081</td>
+<td align="right">2</td>
+<td align="right">.0081</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>Directory</td>
-<td>2</td>
-<td>.0075</td>
+<td align="right">2</td>
+<td align="right">.0075</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>Directory</td>
-<td>4</td>
-<td>.0161</td>
+<td align="right">4</td>
+<td align="right">.0161</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>Directory</td>
-<td>4</td>
-<td>.0147</td>
+<td align="right">4</td>
+<td align="right">.0147</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>Static File</td>
-<td>1</td>
-<td>.0060</td>
+<td align="right">1</td>
+<td align="right">.0060</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>Static File</td>
-<td>1</td>
-<td>.0061</td>
+<td align="right">1</td>
+<td align="right">.0061</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>Static File</td>
-<td>2</td>
-<td>.0081</td>
+<td align="right">2</td>
+<td align="right">.0081</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>Static File</td>
-<td>2</td>
-<td>.0074</td>
+<td align="right">2</td>
+<td align="right">.0074</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>Static File</td>
-<td>4</td>
-<td>.0160</td>
+<td align="right">4</td>
+<td align="right">.0160</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>Static File</td>
-<td>4</td>
-<td>.0143</td>
+<td align="right">4</td>
+<td align="right">.0143</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>CGI Script</td>
-<td>1</td>
-<td>.0145</td>
+<td align="right">1</td>
+<td align="right">.0145</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>CGI Script</td>
-<td>1</td>
-<td>.0146</td>
+<td align="right">1</td>
+<td align="right">.0146</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>CGI Script</td>
-<td>2</td>
-<td>.0254</td>
+<td align="right">2</td>
+<td align="right">.0254</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>CGI Script</td>
-<td>2</td>
-<td>.0161</td>
+<td align="right">2</td>
+<td align="right">.0161</td>
 </tr>
 <tr>
 <td>Single</td>
 <td>CGI Script</td>
-<td>4</td>
-<td>.0515</td>
+<td align="right">4</td>
+<td align="right">.0515</td>
 </tr>
 <tr>
 <td>Forking</td>
 <td>CGI Script</td>
-<td>4</td>
-<td>.0344</td>
+<td align="right">4</td>
+<td align="right">.0344</td>
 </tr>
 </tbody>
 </table>
-<p><center>## Table for Throughput Tests</center></p>
+<h1><center>Table for Throughput Tests</center></h1>
 <table>
 <thead>
 <tr>
 <th>Mode</th>
-<th>File Size</th>
-<th>Average Throughput (GB/s)</th>
+<th align="right">File Size</th>
+<th align="right">Average Throughput (GB/s)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Single</td>
-<td>1 KB</td>
-<td>.036</td>
+<td align="right">1 KB</td>
+<td align="right">.036</td>
 </tr>
 <tr>
 <td>Forking</td>
-<td>1 KB</td>
-<td>.040</td>
+<td align="right">1 KB</td>
+<td align="right">.040</td>
 </tr>
 <tr>
 <td>Single</td>
-<td>1 MB</td>
-<td>29.3</td>
+<td align="right">1 MB</td>
+<td align="right">29.3</td>
 </tr>
 <tr>
 <td>Forking</td>
-<td>1 MB</td>
-<td>35.2</td>
+<td align="right">1 MB</td>
+<td align="right">35.2</td>
 </tr>
 <tr>
 <td>Single</td>
-<td>1 GB</td>
-<td>44.7</td>
+<td align="right">1 GB</td>
+<td align="right">44.7</td>
 </tr>
 <tr>
 <td>Forking</td>
-<td>1 GB</td>
-<td>94.7</td>
+<td align="right">1 GB</td>
+<td align="right">94.7</td>
 </tr>
 </tbody>
 </table>
