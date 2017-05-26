@@ -119,7 +119,7 @@ connection</li>
 <li>parse the command argument for starting server</li>
 <li>allow user to decide the method of handling request, port, root directory...</li>
 </ul>
-<p><center>## Forking and how it works in Spidey</center></p>
+<h2><center>Forking and how it works in Spidey</center></h2>
 <p>To process requests in parallel, the server utilizes <strong>forking</strong>. Forking is
 when a process spawns another process to carry out some task. The spawned
 process is called the child process while the spawning process is the parent
@@ -131,7 +131,7 @@ would wait for the child process to complete the task and exit using the wait()
 system call to prevent zombies. However, in order for the server to process
 requests in parallel, the server instead ignores the child so that multiple
 child processes can be forked and work in parallel.</p>
-<p><center>## Benchmark</center></p>
+<h2><center>Benchmark</center></h2>
 <p>Since the server can run in both parallel and non-parallel, it could be used to
 benchmark the performance of the server when using forking and when not using
 forking. To do so, a python script called thor.py was created that is used to
@@ -142,36 +142,169 @@ types of requests using 1, 2, and 4 processes on 100 requests. The average
 throughput was also measured. Dummy files of 1KB, 1MB, and 1GB were created and
 throughput was calculated by dividing the size of the file by the time it took
 for the request to complete.</p>
-<p><center>## Table for Latency Tests</center>
-| Mode    | File Type   | Number of Processes | Time  |
-|---------|-------------|---------------------|-------|
-| Single  | Directory   | 1                   | .0059 |
-| Forking | Directory   | 1                   | .0061 |
-| Single  | Directory   | 2                   | .0081 |
-| Forking | Directory   | 2                   | .0075 |
-| Single  | Directory   | 4                   | .0161 |
-| Forking | Directory   | 4                   | .0147 |
-| Single  | Static File | 1                   | .0060 |
-| Forking | Static File | 1                   | .0061 |
-| Single  | Static File | 2                   | .0081 |
-| Forking | Static File | 2                   | .0074 |
-| Single  | Static File | 4                   | .0160 |
-| Forking | Static File | 4                   | .0143 |
-| Single  | CGI Script  | 1                   | .0145 |
-| Forking | CGI Script  | 1                   | .0146 |
-| Single  | CGI Script  | 2                   | .0254 |
-| Forking | CGI Script  | 2                   | .0161 |
-| Single  | CGI Script  | 4                   | .0515 |
-| Forking | CGI Script  | 4                   | .0344 |</p>
-<p><center>## Table for Throughput Tests</center>
-| Mode    | File Size | Average Throughput (GB/s) |
-|---------|-----------|---------------------------|
-| Single  | 1 KB      | .036                      |
-| Forking | 1 KB      | .040                      |
-| Single  | 1 MB      | 29.3                      |
-| Forking | 1 MB      | 35.2                      |
-| Single  | 1 GB      | 44.7                      |
-| Forking | 1 GB      | 94.7                      |</p>
+<p><center>## Table for Latency Tests</center></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>File Type</th>
+<th>Number of Processes</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single</td>
+<td>Directory</td>
+<td>1</td>
+<td>.0059</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Directory</td>
+<td>1</td>
+<td>.0061</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Directory</td>
+<td>2</td>
+<td>.0081</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Directory</td>
+<td>2</td>
+<td>.0075</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Directory</td>
+<td>4</td>
+<td>.0161</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Directory</td>
+<td>4</td>
+<td>.0147</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Static File</td>
+<td>1</td>
+<td>.0060</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Static File</td>
+<td>1</td>
+<td>.0061</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Static File</td>
+<td>2</td>
+<td>.0081</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Static File</td>
+<td>2</td>
+<td>.0074</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>Static File</td>
+<td>4</td>
+<td>.0160</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>Static File</td>
+<td>4</td>
+<td>.0143</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>CGI Script</td>
+<td>1</td>
+<td>.0145</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>CGI Script</td>
+<td>1</td>
+<td>.0146</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>CGI Script</td>
+<td>2</td>
+<td>.0254</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>CGI Script</td>
+<td>2</td>
+<td>.0161</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>CGI Script</td>
+<td>4</td>
+<td>.0515</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>CGI Script</td>
+<td>4</td>
+<td>.0344</td>
+</tr>
+</tbody>
+</table>
+<p><center>## Table for Throughput Tests</center></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>File Size</th>
+<th>Average Throughput (GB/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single</td>
+<td>1 KB</td>
+<td>.036</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>1 KB</td>
+<td>.040</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>1 MB</td>
+<td>29.3</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>1 MB</td>
+<td>35.2</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>1 GB</td>
+<td>44.7</td>
+</tr>
+<tr>
+<td>Forking</td>
+<td>1 GB</td>
+<td>94.7</td>
+</tr>
+</tbody>
+</table>
 <p>The results clearly display that forking to handle requests has both advantages
 and disadvantages.  When running in forking mode, the parent process forks to
 create a new child process to handle get requests.  This way, the parent can
