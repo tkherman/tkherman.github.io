@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Dual-booting Ubuntu and Windows for the first time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Herman Tong">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="Herman's Website">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="./theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="./dual-booting-ubuntu-and-windows-for-the-first-time.html">
+<meta name="twitter:title" content="Herman's Website ~ Dual-booting Ubuntu and Windows for the first time">
+<meta name="twitter:description" content="In short, this was a somewhat fun but extremely frustrating experience. Going into this dual-booting adventure, I had some experience with Linux command line having learnt them in my course but almost none with Linux the operating system. So of course, Google became my best friend as I ventured this …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Herman's Website ~ Dual-booting Ubuntu and Windows for the first time" />
+<meta property="og:description" content="In short, this was a somewhat fun but extremely frustrating experience. Going into this dual-booting adventure, I had some experience with Linux command line having learnt them in my course but almost none with Linux the operating system. So of course, Google became my best friend as I ventured this …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <!--<center><a href="."><img id="avatar" src=""></a></center>-->
+    <h1>Herman's Website</h1>
+      <p>Junior in Computer Science at Notre Dame</p>
+    <br>
+
+
+    <nav class="nav">
+      <ul class="list-bare">
+      
+          <li><a class="nav__link" href="">About me</a></li>
+          <li><a class="nav__link" href="/pages/projects.html">Projects</a></li>
+          <li><a class="nav__link" href="/category/blog.html">Blog</a></li>
+         
+        
+      </ul>
+    </nav>
+
+    <p class="social">
+        <a href="http://github.com/tkherman" target="_blank" ><img src="./theme/images/icons/github.png"></a>
+        <a href="https://www.linkedin.com/in/herman-tong-b582b057" target="_blank" ><img src="./theme/images/icons/linkedin.png"></a>
+    </p>
+
+    <h2>Categories</h2>
+    <ul class="navbar">
+      <li class="active"><a href="./category/blog.html">blog</a></li>
+    </ul> 
+
+    <h2>Contact</h2>
+    <ul class="navbar">
+    <li><font color="#41c4f4">ktong1@nd.edu</font></li>
+    <li><font color="#41c4f4">(408)-364-6830</font></li>
+
+
+
+  </aside>
+
+  <!-- Content -->
+  <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="./dual-booting-ubuntu-and-windows-for-the-first-time.html" rel="bookmark" title="Permalink to Dual-booting Ubuntu and Windows for the first time">Dual-booting Ubuntu and Windows for the first time</a></h2>
+        <div class="entry-content blog-post">
+            <p>In short, this was a somewhat fun but extremely frustrating experience. Going
+into this dual-booting adventure, I had some experience with Linux command line
+having learnt them in my course but almost none with Linux the operating system.
+So of course, Google became my best friend as I ventured this journey.</p>
+<h2><center><strong>THE WHY</strong></center></h2>
+<p>I have had my Macbook Air (with the lowest hardware setup) for 4 years and when
+it started to lag when "a few" tabs are opened on Chrome along with Spotify,
+Calendar and Terminal, I knew that it was a time to upgrade because it was
+somewhat affecting my productivity.</p>
+<p>I have always liked the MacOS because I can easily do school work or side
+projects on the Terminal and desktop environment is plain and simple which is
+what I like. But looking at the price tag on the new 2017 MacBook Pro, it was
+simply not in my budget. After some Googling, I found that the Dell XPS 15 9560 
+seems pretty good and more importantly, it's much cheaper for the similar 
+build quality and hardware. However, I still wanted a somewhat similar dekstop
+environment and access to Linux like Terminal so that's when I decided to do
+dual-boot linux. In addition, now I can play some video games in Windows that I
+couldn't play in Mac, yay!</p>
+<p>As for the Linux distro, I chose Kubuntu because Ubuntu community seems to be
+the most active and I can get a lot of information and help by simply Googling.
+I chose the KDE Plasma desktop environment simply because it looks nice (it is
+very important to me especially coming from MacOS) and the intuitive desktop
+behavior allows me to split the screen into 2, 3, or 4 windows by dragging the
+windows to 4 corner which is something I do very often.</p>
+<p><center><img alt="Alt Text" src="./images/splitscreen.png"></center></p>
+<p><center><strong>THE HOW</strong></center>
+The installation really wasn't that difficult. There are tons of guides out
+there on how to dual-boot. I simply followed
+https://ubuntuforums.org/showthread.php?t=2317843 because it's specifically for
+the Dell XPS 15 even though it's for 9550 not 9560. Big thanks to
+<strong>Javier_Macias-Guar</strong>.</p>
+<p>In short, I did:</p>
+<ol>
+<li>Boot in Windows and create a recovery disk on an USB using Windows built
+in software</li>
+<li>Use <strong>Rufus</strong> to create a bootable USB drive with the Kubuntu iso on it</li>
+<li>Partition my SSD<ul>
+<li>100GB for the Ubuntu OS</li>
+<li>~130GB left for Windows</li>
+</ul>
+</li>
+<li>Disable fast boot option in Windows</li>
+<li>Boot Windows in <strong>Safe Mode</strong></li>
+<li>Enter BIOS to turn off Secure Boot and changed SATA Operation from <strong>RAID</strong> to
+<strong>AHCI</strong> then reboot</li>
+<li>Disable <strong>Safe Mode</strong> and then reboot again</li>
+<li>Insert the USB drive with Kubuntu 17.04 while holding F12 and run the
+installation with the following partition<ul>
+<li>2GB for swap</li>
+<li>20GB for /</li>
+<li>75GB for /home<ul>
+<li>read online that this make upgrading or changing desktop etc easier
+  since the home partition is separted and won't be affected when
+  upgrading</li>
+<li>this actually came in clutch when I reinstalled like 5 times after I
+  mess something up later</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>This worked great, everything was working wifi, touchpad, sleep, shutdown and
+boot. Grub was working and I could switch between Ubuntu and Windows easily by
+rebooting. I then spent sometime customizing the Desktop because KDE offers so
+much customization and it's really great. I also installed tlp which is a
+battery manager. Installing and using it was simple (I didn't change any of the
+setting):</p>
+<div class="highlight"><pre><span></span>sudo add-apt-repository ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get install tlp
+sudo tlp start
+</pre></div>
+
+
+<p>This worked pretty well as it imporved the battery life from 4-5 to around 9-10
+hours. How this works, no idea but it works! lol</p>
+<p>It was all good until one day, I felt my labtop burning through the backpack to
+the point where it was almost too hot to touch. It absolutely freaked me out
+thinking that I've already broke my new labtop.</p>
+<p><center><strong>THE PROBLEMS</strong></center>
+Before I put the labtop in my computer, I simply closed the lid assuming that it
+would go into suspend. Turns out what happened was that after an update,
+suspend, reboot and shutdown didn't seem to work which I had no idea why because
+it worked fine.</p>
+<p>What I think happened was that the computer didn't fully go into suspend with
+many processes still running in the background. However, the fan is turnt off so
+heat just kept building up until it was too hot. After hours and hours of
+Googling and messing around witht the system, including a few times of
+reinstalling the system, I think I've finally fixed it.</p>
+<p>By default, Nouveau graphic driver is used when Ubuntu is installed. I think
+after some update, there was some bug with problem with the driver with the
+kernel. (Don't really know what or if I'm right or wrong) To fix that, I
+installed the Nvidia driver, updated the kernel. I followed this guide
+https://gist.github.com/whizzzkid/37c0d365f1c7aa555885d102ec61c048 by
+<strong>whizzkid</strong> and everything works perfectly now, well at least for now.</p>
+<p>Essentially, when I'm using Kubuntu for daily usage, I use the integrated Intel
+GPU because it's much less power intensive than using the Nvidia GPU. The
+switching could be done by using prime-select (nvidia/intel) command. Since I
+only game on Windows, I can keep the integrated Intel GPU by default.</p>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href=".">@Herman Tong</a>
+            <!--<a href="./author/herman-tong.html">@Herman Tong</a>-->
+            <span> in </span>
+            <span class="post_category"><a href="./category/blog.html" rel="bookmark" title="Permalink to blog">[ blog ]</a></span>
+            <span class="post_date">Sun 18 June 2017</span>
+            <!--
+            <div><span>Tags : </span>
+            </div>-->
+            <!--
+            <div class="entry-social">
+                <span class="twitter"><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./dual-booting-ubuntu-and-windows-for-the-first-time.html&text=Dual-booting Ubuntu and Windows for the first time&via="><img src="./theme/images/icons/twitter-s.png"></a></span>
+
+                <span class="gplus"><a target="_blank" title="Google +" href="https://plus.google.com/share?url=./dual-booting-ubuntu-and-windows-for-the-first-time.html&hl=fr" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="./theme/images/icons/google-s.png"></a></span>
+
+                <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./dual-booting-ubuntu-and-windows-for-the-first-time.html&t=Dual-booting Ubuntu and Windows for the first time"><img src="./theme/images/icons/facebook-s.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./dual-booting-ubuntu-and-windows-for-the-first-time.html&title=Dual-booting Ubuntu and Windows for the first time" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="./theme/images/icons/linkedin-s.png"></a>
+
+                <span class="mail"><a href="mailto:?subject=Dual-booting Ubuntu and Windows for the first time&amp;body=Viens découvrir un article à propos de [Dual-booting Ubuntu and Windows for the first time] sur le site de Herman Tong. ./dual-booting-ubuntu-and-windows-for-the-first-time.html" title="Share by Email" target="_blank"><img src="./theme/images/icons/mail-s.png"></a></span>
+            </div>-->
+        </div>
+    </article>
+</section>
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
+      which takes great advantage of <a href="http://python.org">Python</a>.
+      Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+    </p>
+  </footer>
+
+
+</body>
+</html>
