@@ -73,6 +73,23 @@
         
         <h2><center><strong>Projects</strong></center></h2>
 <hr>
+<h3><center><strong>Rorschach Directory Scannery</strong></center></h3>
+<p>This is a program that monitors a directory and examines all files under the
+directory to determine if any files have been created, modified or deleted. If
+any of those events occur, an action on the file would be executed if the name
+of the file matches any of the patterns specified in a rule file.</p>
+<p>The rule file is a simple text file with lines in the format of:</p>
+<p>EVENT   PATTERN     ACTION</p>
+<p>To run the program, compile the source code with "make" and run the executable
+with the following arguments:</p>
+<p>$ ./rorschach -h
+Usage: rorschach [options] ROOT</p>
+<p>Options:
+    -h          Print this help message
+    -f RULES    Load rules from this file (default is rules)
+    -t SECONDS  Time between scans (default is 5 seconds)</p>
+<p><center><img alt="Icon" src="../images/github2.png"><a href="https://github.com/tkherman/Rorschach"> Click here for Rorschach repository </a></center></p>
+<hr>
 <h3><center><strong>Texas Hold'em Simulation with AI</strong></center></h3>
 <p><center><img alt="Alt Text" src="../images/TexasHoldem.png"></center></p>
 <p>This is a fully implemented command-line based Texas Hold'em Poker Game with odd
