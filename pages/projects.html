@@ -73,7 +73,28 @@
         
         <h2><center><strong>Projects</strong></center></h2>
 <hr>
-<h3><center><strong>Rorschach Directory Scannery</strong></center></h3>
+<h3><center><strong>Multi-core Process Queue Simulator</strong></center></h3>
+<p>This project simulates a multi-core process queue that receive a series of jobs
+and schedule them to run on multiple CPU cores as separate processes using one
+of the selected scheduling policy (FIFO, Round Robin, MLFQ). The process queue
+as two components, a <strong>server</strong> and a <strong>client</strong>.</p>
+<p>The <strong>server</strong> maintains a queue of running jobs, waiting jobs and schedule them
+according to the scheduling policies.</p>
+<p>The <strong>client</strong> allows the user to send jobs for the <strong>server</strong> to schedule and
+query the status of running and waiting jobs. It supports sending the following
+commands to the server:</p>
+<ul>
+<li>ADD command   : sends the "command" to the server to schedule</li>
+<li>STATUS        : gets the summary of running and waiting jobs, average
+                  turnaround time and response time</li>
+<li>RUNNING       : gets the list of all running jobs</li>
+<li>WAITING       : gets the list of all waiting jobs</li>
+<li>FLUSH         : removes all jobs and terminates all active or suspended
+                  processes</li>
+</ul>
+<p><center><img alt="Icon" src="../images/github2.png"><a href="https://github.com/tkherman/Scheduling-Simulator"> Click here for Multi-core Process Queue Simulator repository </a></center></p>
+<hr>
+<h3><center><strong>Rorschach Directory Scanner</strong></center></h3>
 <p>This is a program that monitors a directory and examines all files under the
 directory to determine if any files have been created, modified or deleted. If
 any of those events occur, an action on the file would be executed if the name
